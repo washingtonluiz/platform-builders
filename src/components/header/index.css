@@ -1,5 +1,12 @@
 .header {
+  align-items: center;
+  background-color: var(--backgroundColor);
+  border-radius: 4px 0 0 4px;
+  box-shadow: 10px 0 10px -5px #888;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
   position: relative;
   z-index: 2;
-  width: ;
+  width: 35%;
 }
