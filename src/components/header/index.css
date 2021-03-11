@@ -8,5 +8,102 @@
   padding: 15px;
   position: relative;
   z-index: 2;
-  width: 35%;
+  width: 40%;
 }
+
+.menu-mobile{
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: -50px;
+  z-index: 10;
+}
+#menu-mobile{
+  -moz-transform: rotate(0deg);
+  -moz-transition: .5s ease-in-out;
+  -o-transform: rotate(0deg);
+  -o-transition: .5s ease-in-out;
+  -webkit-transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  cursor: pointer;
+  display: block;
+  height: 25px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  width: 30px;
+  z-index: 999;
+}
+
+#menu-mobile span{
+  -moz-transform: rotate(0deg);
+  -moz-transition: .25s ease-in-out;
+  -o-transform: rotate(0deg);
+  -o-transition: .25s ease-in-out;
+  -webkit-transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  background: var(--darkColor);
+  border-radius: 9px;
+  display: block;
+  height: 4px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+  width: 100%;
+}
+#menu-mobile span:nth-child(1) {
+  top: 0px;
+}
+#menu-mobile span:nth-child(2) {
+  top: 10px;
+}
+#menu-mobile span:nth-child(3) {
+  top: 19px;
+}
+
+#menu-mobile.open span:nth-child(1) {
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  top: 18px;
+  transform: rotate(135deg);
+}
+#menu-mobile.open span:nth-child(2) {
+  left: -60px;
+  opacity: 0;
+}
+
+#menu-mobile.open span:nth-child(3) {
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  top: 18px;
+  transform: rotate(-135deg);
+}
+
+@media screen and (max-width: 768px){
+  .header{
+    height: 100vh;
+    margin-left: -101%;
+    transition: margin-left 0.5s ease-in-out;
+    position: absolute;
+    width: 100vw;
+  }
+  .header.open {
+    margin-left: 0;
+  }
+
+  .header.open .menu-mobile {
+    right: 8px;
+  }
+  .header.open .menu-mobile #menu-mobile span {
+    background: var(--whiteColor);
+  }
+    
+  .menu-mobile {
+    display: block;
+  }
+}
+

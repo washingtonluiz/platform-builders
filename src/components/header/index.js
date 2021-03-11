@@ -21,7 +21,8 @@ class Header extends Component {
       coords: {},
       weather: {},
       loading: true,
-      loadIcon: false
+      loadIcon: false,
+      isActiveMenuMobile: false,
     };
   }
 
@@ -39,7 +40,11 @@ class Header extends Component {
         },
       });
       this.props.getUserCoordinates(this.state.coords, (fn) => {
-        this.setState({ loading: false, loadIcon: false, weather: fn.data.weather[0] });
+        this.setState({
+          loading: false,
+          loadIcon: false,
+          weather: fn.data.weather[0],
+        });
       });
     });
   };
@@ -55,13 +60,28 @@ class Header extends Component {
   render() {
     const { userCoordinates } = this.props;
     const { name, main = {} } = userCoordinates;
-    const { loading, weather, loadIcon } = this.state;
+    const { loading, weather, loadIcon, isActiveMenuMobile } = this.state;
 
     return (
       <header
-        className="header"
+        className={`header ${isActiveMenuMobile ? "open" : ""}`}
         style={{ background: `url(${Rio}) center center / cover no-repeat` }}
       >
+        <div className="menu-mobile">
+          <div
+            id="menu-mobile"
+            className={`jmenu-mobile ${isActiveMenuMobile ? "open" : ""}`}
+            onClick={() =>
+              this.setState({
+                isActiveMenuMobile: !this.state.isActiveMenuMobile,
+              })
+            }
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
         {loading && <Placeholder />}
         {!loading && (
           <UserWeather

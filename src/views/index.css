@@ -13,8 +13,24 @@
   padding: 30px;
 }
 
+.main-city {
+  background: #e8e8e8;
+  width: 100%;
+}
+
+.main-placeholder {
+  width: 100%;
+}
+
 @media screen and (min-width: 1200px){
   .container__content{
     width: 60vw;
+  }
+}
+
+@media screen and (max-width: 1199px){
+  .container__content{
+    height: 100%;
+    width: 100%;
   }
 }

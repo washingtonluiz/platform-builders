@@ -2,9 +2,9 @@ import React from "react";
 
 // import { Container } from './styles';
 
-function placeholder() {
+function placeholder(props) {
   return (
-    <div className="weather-data placeholder">
+    <div className={`weather-data placeholder ${props.classe}`}>
       <span className="weather-data__reload"></span>
       <h3>&nbsp;</h3>
       <span className="weather-data__icon"></span>

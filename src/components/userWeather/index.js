@@ -18,7 +18,7 @@ class userWeather extends Component {
       case "scattered clouds":
         return "Nuvens Dispersas";
       case "broken clouds":
-        return "nuvens quebradas";
+        return "Nuvens Quebradas";
       case "shower rain":
         return "";
       case "rain":
@@ -31,21 +31,27 @@ class userWeather extends Component {
         return "Névoa";
 
       default:
-        break;
+        return desc;
     }
   }
   render() {
-    const { name, weather, main, reload, loadIcon } = this.props;
+    const { name, weather, main, reload, loadIcon, classe = "" } = this.props;
     return (
-      <div className="weather-data">
-        <span
-          className="weather-data__reload"
-          alt="Atualizar"
-          title="Atualizar"
-          onClick={() => reload()}
-        >
-          <img src={Reload} alt="" className={`${loadIcon ? "rotate" : ""}`} />
-        </span>
+      <div className={`weather-data ${classe}`}>
+        {reload && (
+          <span
+            className="weather-data__reload"
+            alt="Atualizar"
+            title="Atualizar"
+            onClick={() => reload()}
+          >
+            <img
+              src={Reload}
+              alt=""
+              className={`${loadIcon ? "rotate" : ""}`}
+            />
+          </span>
+        )}
         <h3>{name}</h3>
         <img
           src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
@@ -58,10 +64,11 @@ class userWeather extends Component {
         </span>
         <div className="weather__temp">
           <span className="weather__temp--min">
-            <img src={Min} alt="" /> <strong>{main.temp_min}°</strong>
+            <img src={Min} alt="" />
+            <strong>{Math.trunc(main.temp_min)}°</strong>
           </span>
           <span className="weather__temp--max">
-            <img src={Max} alt="" />{" "}
+            <img src={Max} alt="" />
             <strong>{Math.trunc(main.temp_max)}°</strong>
           </span>
         </div>
